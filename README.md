@@ -51,10 +51,12 @@ Evaluation
 .
 ├── README.md
 ├── AGENTS.md
+├── .github/
+│   ├── CODEOWNERS
+│   └── pull_request_template.md
 ├── transcripts/
 │   ├── README.md
-│   ├── SRC-0001.md
-│   └── SRC-0002.md
+│   └── SRC-XXXX.md
 └── knowledge/
     ├── rules.md
     ├── glossary.md
@@ -67,13 +69,7 @@ Evaluation
 
 ### `transcripts/`
 
-متن خام و زمان‌بندی‌شده هر منبع را نگهداری می‌کند. نام هر فایل باید با شناسه ثبت‌شده در `knowledge/sources.md` یکسان باشد؛ برای نمونه:
-
-```text
-transcripts/SRC-0001.md
-```
-
-Transcript خام مرجع بررسی قواعد است و نباید برای هماهنگ‌شدن با برداشت مدل بازنویسی شود. اگر ذخیره متن کامل از نظر حق نشر مجاز نباشد، فقط متادیتا، تایم‌استمپ‌های موردنیاز و نقل‌به‌معنای محدود نگهداری می‌شود.
+متن خام و زمان‌بندی‌شده منابع را نگهداری می‌کند. مرجع رسمی نام‌گذاری، قالب، نگهداری، محدودیت‌های دسترسی و اعتبارسنجی فایل‌های این پوشه، [`transcripts/README.md`](transcripts/README.md) است.
 
 ### `knowledge/rules.md`
 
