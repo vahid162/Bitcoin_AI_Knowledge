@@ -253,6 +253,22 @@ The canonical format and section requirements for Pull Request descriptions and 
 
 Before opening or fully summarizing a Pull Request, agents must read and follow that file without duplicating its structure or instructions in this document.
 
+### Pull Request Instruction Conflicts
+
+The intended Pull Request policy for this repository is defined by this section and `.github/pull_request_template.md`.
+
+If a global, user-level, custom, tool-generated, or other external instruction specifies a Pull Request format or workflow that cannot be followed together with this repository policy, agents must:
+
+1. Not silently choose, merge, or substitute incompatible instructions.
+2. Stop before opening or updating the Pull Request.
+3. Report the exact conflicting requirements and their sources.
+4. Request an explicit resolution when the applicable instruction hierarchy does not already resolve the conflict.
+5. Re-read `.github/pull_request_template.md` after the conflict is resolved and validate the final Pull Request against it.
+
+After creating or updating Pull Request metadata, agents must read the Pull Request back from GitHub and verify that the actual title and body match the intended repository policy.
+
+Agents must not claim that a Pull Request title, body, state, reviewer, label, or other metadata was updated unless the resulting GitHub state was successfully retrieved and confirmed.
+
 Additional repository-wide rules:
 
 - Keep the PR title concise and in English, consistent with existing repository PRs.
@@ -288,6 +304,7 @@ Before completing a change, verify:
 - Markdown headings and code fences are valid.
 - Relative links resolve correctly.
 - Any Pull Request description follows `.github/pull_request_template.md`.
+- Any claimed Pull Request metadata update was verified by reading the resulting Pull Request state from GitHub.
 - No secrets or credentials were added.
 - No real trading action was enabled.
 
