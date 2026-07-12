@@ -6,18 +6,30 @@ This repository stores source-grounded knowledge extracted from Bitcoin educatio
 
 Agents working in this repository must preserve traceability, separate historical commentary from reusable knowledge, and avoid inventing trading rules, market facts, timestamps, prices, or source claims.
 
+## Repository Layout
+
+- `transcripts/`: raw, timestamped source transcripts
+- `knowledge/sources.md`: source registry and processing status
+- `knowledge/rules.md`: reusable analytical rules
+- `knowledge/glossary.md`: canonical terminology
+- `knowledge/historical_examples.md`: date-specific examples and forecasts
+- `knowledge/ambiguous_items.md`: unresolved transcript or visual ambiguities
+- `knowledge/conflicts.md`: conflicting rules or evidence
+- `knowledge/evaluations.md`: extraction and historical-application evaluations
+
 ## Required Reading
 
 Before modifying any knowledge file, read:
 
 1. `README.md`
-2. `Bitcoin_AI_Knowledge/sources.md`
-3. `Bitcoin_AI_Knowledge/rules.md`
+2. `knowledge/sources.md`
+3. `knowledge/rules.md`
 4. The destination file being modified
-5. Relevant entries in `Bitcoin_AI_Knowledge/ambiguous_items.md`
-6. Relevant entries in `Bitcoin_AI_Knowledge/conflicts.md`
+5. Relevant entries in `knowledge/ambiguous_items.md`
+6. Relevant entries in `knowledge/conflicts.md`
+7. The corresponding file in `transcripts/` when a source-derived claim is involved
 
-Do not update a rule without checking its source record.
+Do not update a rule without checking both its source record and supporting transcript.
 
 ## Core Principles
 
@@ -27,6 +39,7 @@ Every material educational claim must be supported by:
 
 - A valid Source ID
 - A source URL or file reference
+- A transcript path
 - A timestamp or section reference
 - A concise evidence excerpt or faithful paraphrase
 
@@ -67,22 +80,28 @@ Do not convert one observation or one historical example into a general rule wit
 
 ### 4. Historical Levels Are Not Current Levels
 
-Price levels, support zones, resistance zones, targets, and invalidation levels from old videos belong in `historical_examples.md`.
+Price levels, support zones, resistance zones, targets, and invalidation levels from old videos belong in `knowledge/historical_examples.md`.
 
-They must not be added to `rules.md` as permanent values or reused as current levels without fresh market data.
+They must not be added to `knowledge/rules.md` as permanent values or reused as current levels without fresh market data.
 
-### 5. Transcript Quality
+### 5. Transcript Integrity
 
 Speech-to-text output is not assumed to be accurate.
+
+Raw transcripts belong in `transcripts/SRC-XXXX.md`, where the filename matches the Source ID in `knowledge/sources.md`.
 
 When a word, indicator, company name, chart label, or number is uncertain:
 
 - Preserve the original transcript text
 - Add any possible correction only as an unverified suggestion
-- Record the item in `ambiguous_items.md`
+- Record the item in `knowledge/ambiguous_items.md`
 - Mark whether audio or visual review is required
 
 Do not silently correct uncertain terminology.
+
+Do not rewrite raw transcript text to make an extracted rule appear better supported.
+
+If storing the complete transcript is not legally permitted, retain only source metadata, necessary timestamps, and limited faithful paraphrases.
 
 ### 6. Visual Dependencies
 
@@ -109,7 +128,7 @@ Do not create new probability percentages without a documented statistical metho
 
 ## Rule Requirements
 
-Each rule added to `Bitcoin_AI_Knowledge/rules.md` must contain:
+Each rule added to `knowledge/rules.md` must contain:
 
 ```text
 Rule ID:
@@ -124,6 +143,7 @@ Invalidation:
 Exceptions:
 Time horizon:
 Source ID:
+Transcript path:
 Timestamp:
 Evidence:
 Extraction confidence:
@@ -144,15 +164,20 @@ Allowed statuses:
 
 Agents may create `candidate` rules.
 
-Agents must not upgrade a rule to `verified` unless the supporting evidence has been reviewed and is sufficient.
+Agents must not upgrade a rule to `verified` unless the supporting source, transcript, timestamp, and any required visual evidence have been reviewed and are sufficient.
 
-When evidence conflicts, set the rule status to `conflicted` and add an entry to `conflicts.md`.
+When evidence conflicts, set the rule status to `conflicted` and add an entry to `knowledge/conflicts.md`.
 
 Do not delete deprecated or rejected rules. Preserve their history and document the reason for the status change.
 
 ## Source Requirements
 
-Before adding knowledge from a new video, add a record to `Bitcoin_AI_Knowledge/sources.md`.
+Before adding knowledge from a new video:
+
+1. Add a source record to `knowledge/sources.md`.
+2. Assign a unique Source ID such as `SRC-0001`.
+3. Store the transcript at `transcripts/SRC-0001.md`, when legally permitted.
+4. Confirm that the source record points to the correct transcript path.
 
 Minimum source fields:
 
@@ -162,9 +187,11 @@ Title:
 URL or file reference:
 Publisher:
 Publication date:
+Recording date:
 Transcript source:
+Transcript language:
+Transcript path:
 Processing date:
-Language:
 Review status:
 Notes:
 ```
@@ -228,7 +255,7 @@ Do not select only favorable examples.
 - Do not overwrite user-authored notes without explicit instruction.
 - Maintain valid relative Markdown links.
 - Use UTF-8 encoding.
-- Keep terminology consistent with `glossary.md`.
+- Keep terminology consistent with `knowledge/glossary.md`.
 - Do not add secrets, credentials, private keys, seed phrases, or personal data.
 
 ## Validation Checklist
@@ -236,8 +263,9 @@ Do not select only favorable examples.
 Before completing a change, verify:
 
 - All referenced files exist.
+- Every transcript filename matches its Source ID.
 - Every new rule has a unique Rule ID.
-- Every new rule has a Source ID and timestamp.
+- Every new rule has a Source ID, transcript path, and timestamp.
 - Historical values were not added as permanent rules.
 - Ambiguous transcript terms were recorded.
 - Visual dependencies were marked.
@@ -251,4 +279,4 @@ Before completing a change, verify:
 
 Knowledge changes should be made in a dedicated commit or pull request.
 
-If a change introduces unsupported rules, broken references, incorrect attribution, or leaked future information, revert the relevant commit rather than hiding the original modification.
+If a change introduces unsupported rules, broken references, incorrect attribution, modified raw evidence, or leaked future information, revert the relevant commit rather than hiding the original modification.
