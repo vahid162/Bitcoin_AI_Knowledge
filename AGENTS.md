@@ -17,6 +17,24 @@ Agents working in this repository must preserve traceability, separate historica
 - `knowledge/conflicts.md`: conflicting rules or evidence
 - `knowledge/evaluations.md`: extraction and historical-application evaluations
 
+## Local Directory Instructions
+
+Some directories may contain a local `README.md` that defines the operational contract for files stored in that directory.
+
+Before creating, modifying, moving, or deleting a file inside such a directory, agents must:
+
+1. Read the directory's local `README.md`.
+2. Follow its naming convention, required metadata, file format, preservation rules, and validation requirements.
+3. Treat the local `README.md` as the single source of truth for directory-specific procedures.
+4. Avoid duplicating those procedures in this root `AGENTS.md`.
+5. Stop and report the conflict if a local instruction contradicts this root `AGENTS.md`.
+
+Currently active local directory contracts:
+
+- `transcripts/README.md` applies to all files under `transcripts/`.
+
+No other directory currently has an active local contract.
+
 ## Required Reading
 
 Before modifying any knowledge file, read:
@@ -27,7 +45,8 @@ Before modifying any knowledge file, read:
 4. The destination file being modified
 5. Relevant entries in `knowledge/ambiguous_items.md`
 6. Relevant entries in `knowledge/conflicts.md`
-7. The corresponding file in `transcripts/` when a source-derived claim is involved
+7. The corresponding transcript when a source-derived claim is involved
+8. Any applicable local directory `README.md`
 
 Do not update a rule without checking both its source record and supporting transcript.
 
@@ -39,7 +58,7 @@ Every material educational claim must be supported by:
 
 - A valid Source ID
 - A source URL or file reference
-- A transcript path
+- A transcript path when transcript evidence is available
 - A timestamp or section reference
 - A concise evidence excerpt or faithful paraphrase
 
@@ -84,24 +103,17 @@ Price levels, support zones, resistance zones, targets, and invalidation levels 
 
 They must not be added to `knowledge/rules.md` as permanent values or reused as current levels without fresh market data.
 
-### 5. Transcript Integrity
+### 5. Transcript Invariants
 
-Speech-to-text output is not assumed to be accurate.
+These repository-wide invariants always apply:
 
-Raw transcripts belong in `transcripts/SRC-XXXX.md`, where the filename matches the Source ID in `knowledge/sources.md`.
+- Never invent transcript text, timestamps, source metadata, or speaker intent.
+- Never rewrite raw evidence to make an extracted rule appear better supported.
+- Preserve traceability between the Source ID, transcript file, timestamp, and extracted knowledge.
+- Record unresolved wording, visual dependencies, and uncertain corrections in `knowledge/ambiguous_items.md`.
+- Do not store content when doing so would violate applicable access or copyright restrictions.
 
-When a word, indicator, company name, chart label, or number is uncertain:
-
-- Preserve the original transcript text
-- Add any possible correction only as an unverified suggestion
-- Record the item in `knowledge/ambiguous_items.md`
-- Mark whether audio or visual review is required
-
-Do not silently correct uncertain terminology.
-
-Do not rewrite raw transcript text to make an extracted rule appear better supported.
-
-If storing the complete transcript is not legally permitted, retain only source metadata, necessary timestamps, and limited faithful paraphrases.
+All transcript-specific naming, formatting, metadata, maintenance, and validation procedures are defined exclusively in `transcripts/README.md`.
 
 ### 6. Visual Dependencies
 
@@ -172,29 +184,14 @@ Do not delete deprecated or rejected rules. Preserve their history and document 
 
 ## Source Requirements
 
-Before adding knowledge from a new video:
+Before adding knowledge from a new source:
 
 1. Add a source record to `knowledge/sources.md`.
-2. Assign a unique Source ID such as `SRC-0001`.
-3. Store the transcript at `transcripts/SRC-0001.md`, when legally permitted.
-4. Confirm that the source record points to the correct transcript path.
+2. Assign a unique Source ID.
+3. Follow the relevant local directory contract when creating or modifying source evidence.
+4. Confirm that all recorded paths resolve to the correct files.
 
-Minimum source fields:
-
-```text
-Source ID:
-Title:
-URL or file reference:
-Publisher:
-Publication date:
-Recording date:
-Transcript source:
-Transcript language:
-Transcript path:
-Processing date:
-Review status:
-Notes:
-```
+Use the canonical source-record template defined in `knowledge/sources.md` rather than duplicating it here.
 
 Do not claim a publication date when only the processing date is known.
 
@@ -263,9 +260,9 @@ Do not select only favorable examples.
 Before completing a change, verify:
 
 - All referenced files exist.
-- Every transcript filename matches its Source ID.
+- Applicable local directory instructions were read and followed.
 - Every new rule has a unique Rule ID.
-- Every new rule has a Source ID, transcript path, and timestamp.
+- Every new rule has a Source ID, evidence path, and timestamp where available.
 - Historical values were not added as permanent rules.
 - Ambiguous transcript terms were recorded.
 - Visual dependencies were marked.
