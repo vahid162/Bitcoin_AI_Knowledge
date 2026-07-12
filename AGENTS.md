@@ -248,7 +248,7 @@ Do not select only favorable examples.
 
 The canonical format for Pull Request descriptions is defined in:
 
-` .github/pull_request_template.md `
+`.github/pull_request_template.md`
 
 Before opening a Pull Request, agents must read and follow that template.
 
