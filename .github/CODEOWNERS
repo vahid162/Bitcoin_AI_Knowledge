@@ -1,0 +1,15 @@
+# Default repository owner
+* @vahid162
+
+# Governance-critical files
+/AGENTS.md @vahid162
+/README.md @vahid162
+/.github/ @vahid162
+
+# Local operational contracts
+/transcripts/README.md @vahid162
+
+# Knowledge schemas and registries
+/knowledge/rules.md @vahid162
+/knowledge/sources.md @vahid162
+/knowledge/evaluations.md @vahid162
