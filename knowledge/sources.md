@@ -22,7 +22,7 @@ Publication date:
 Recording date:
 Transcript source:
 Transcript language:
-Transcript file or location:
+Transcript file or location: transcripts/SRC-XXXX.md
 Processing date:
 Review status:
 Visual material available: true | false
@@ -39,6 +39,7 @@ Notes:
 - لینک و عنوان منبع بدون بررسی ساخته نشوند.
 - در صورت حذف یا خصوصی‌شدن ویدیو، مرجع موجود و وضعیت دسترسی حفظ شود.
 - منبع Transcript مشخص شود: زیرنویس رسمی، خودکار، استخراج دستی یا سرویس خارجی.
+- هر Transcript ذخیره‌شده باید با همان Source ID در مسیر `transcripts/` قرار گیرد.
 - فایل‌های دارای حق نشر بدون مجوز بازتوزیع نشوند.
 
 ## فهرست منابع
