@@ -21,7 +21,7 @@ Source
   ↓
 Raw Transcript
   ↓
-Reusable Knowledge
+Verified Rules / Reviewed Knowledge
   ↓
 Current Market Data
   ↓
@@ -30,7 +30,7 @@ Analysis Conclusion
 Evaluation
 ```
 
-هر نتیجه مهم در تحلیل نهایی باید مشخص کند از کدام `Source ID`، کدام تایم‌استمپ و در صورت وجود از کدام `Rule ID` به دست آمده است.
+هر نتیجه مهم باید `Source ID` و تایم‌استمپ مرتبط را مشخص کند و هر زمان قاعده‌ای استفاده شده است، `Rule ID`های استفاده‌شده را نیز ذکر کند.
 
 ## این پروژه چه چیزی نیست؟
 
@@ -156,7 +156,7 @@ Evaluation
 - قرارداد محلی Transcript در [`transcripts/README.md`](transcripts/README.md) فعال است.
 - قالب Pull Request در [`.github/pull_request_template.md`](.github/pull_request_template.md) فعال است.
 - فایل [`.github/CODEOWNERS`](.github/CODEOWNERS) وجود دارد.
-- مسئولیت‌های Single Source of Truth در این README تعریف و به فایل‌های رسمی لینک شده‌اند.
+- نقشه مراجع Single Source of Truth در این README ارائه شده و به فایل‌های رسمی مربوطه لینک داده شده است.
 - در [`knowledge/sources.md`](knowledge/sources.md) هنوز هیچ منبعی ثبت نشده است.
 - در [`knowledge/rules.md`](knowledge/rules.md) هنوز هیچ قاعده تحلیلی ثبت نشده است.
 - هیچ قاعده‌ای صرفاً به‌دلیل ثبت در مخزن، آماده استفاده برای معامله واقعی نیست.
