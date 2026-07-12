@@ -8,6 +8,7 @@ Agents working in this repository must preserve traceability, separate historica
 
 ## Repository Layout
 
+- `.github/pull_request_template.md`: canonical Pull Request description and summary-comment format
 - `transcripts/`: raw, timestamped source transcripts
 - `knowledge/sources.md`: source registry and processing status
 - `knowledge/rules.md`: reusable analytical rules
@@ -243,6 +244,40 @@ For historical tests:
 
 Do not select only favorable examples.
 
+## Pull Request Communication Policy
+
+The canonical format for Pull Request descriptions is defined in:
+
+`.github/pull_request_template.md`
+
+Before opening a Pull Request, agents must read and follow that template.
+
+This policy applies to:
+
+- The initial Pull Request description
+- Any AI-authored top-level PR comment that summarizes the complete change or provides a full status update
+
+The following rules are mandatory:
+
+1. Write the PR description and full summary comments in Persian.
+2. Preserve the exact headings and order from the canonical template:
+   - `## خلاصه`
+   - `## تغییرات`
+   - `## اعتبارسنجی`
+   - `## نتیجه نهایی`
+3. Do not rename, remove, reorder, or add competing top-level sections.
+4. Populate every section with change-specific information; do not leave template instructions or empty headings.
+5. Mention only checks and validations that were actually performed.
+6. Under `## نتیجه نهایی`, show the final file structure in a code block when paths or architecture changed.
+7. If no structural change occurred, explicitly write: `تغییر ساختاری ندارد.`
+8. Keep the PR title concise and in English, consistent with existing repository PRs.
+9. Prefer updating the PR description when the scope changes instead of posting a second summary in a different format.
+10. Do not post a redundant top-level summary comment when the current PR description already reflects the final state.
+
+Inline review replies and narrow answers to reviewer questions are exempt from the full four-section template. They should answer the specific review point directly and concisely.
+
+If GitHub pre-populates the PR body from the template, replace all instructional comments with real content before opening the PR.
+
 ## Editing Rules
 
 - Preserve existing IDs.
@@ -269,6 +304,7 @@ Before completing a change, verify:
 - Conflicts were not silently removed.
 - Markdown headings and code fences are valid.
 - Relative links resolve correctly.
+- Any Pull Request description follows `.github/pull_request_template.md`.
 - No secrets or credentials were added.
 - No real trading action was enabled.
 
